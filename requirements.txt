@@ -1,0 +1,15 @@
+wheel
+jupyterlab
+numpy
+scipy
+joblib
+threadpoolctl
+scikit-learn
+matplotlib
+xgboost
+lightgbm
+catboost
+ipywidgets
+dask[complete]
+dask-cuda
+dask-ml
