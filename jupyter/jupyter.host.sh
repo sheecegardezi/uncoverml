@@ -25,7 +25,7 @@ module load python3/3.7.4
 module load gdal/3.0.2
 source $PBS_O_WORKDIR/uncoverml/venv/bin/activate
 
-export jport=8388
+export jport=8389
 
 echo "Jupyter lab started ..."
 jupyter lab --no-browser --ip=`hostname` --port=${jport} &
