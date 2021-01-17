@@ -17,3 +17,4 @@ rasterio
 ray
 fiona
 memory_profiler
+modin[all]

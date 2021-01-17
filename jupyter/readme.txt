@@ -22,3 +22,4 @@ python3 -m venv $HOME/uncoverml/venv
 source $HOME/uncoverml/venv/bin/activate
 $HOME/uncoverml/venv/bin/python -m pip install -r $HOME/uncoverml/requirements.txt
 qsub $HOME/uncoverml/jupyter/jupyter.host.sh
+nqstat_anu
