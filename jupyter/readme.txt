@@ -5,7 +5,7 @@
 # jupyter notebook --generate-config -y
 # jupyter notebook password
 # cd  $HOME
-# qsub $HOME/uncover-ml/jupyter/jupyter.host.sh
+# qsub $HOME/uncoverml/jupyter/jupyter.host.sh
 # nqstat_anu
 # more client_cmd
 
@@ -21,3 +21,4 @@ chmod +x $HOME/uncoverml/jupyter/jupyter.host.sh
 python3 -m venv $HOME/uncoverml/venv
 source $HOME/uncoverml/venv/bin/activate
 $HOME/uncoverml/venv/bin/python -m pip install -r $HOME/uncoverml/requirements.txt
+qsub $HOME/uncoverml/jupyter/jupyter.host.sh
