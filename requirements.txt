@@ -13,3 +13,7 @@ ipywidgets
 dask[complete]
 dask-cuda
 dask-ml
+rasterio
+ray
+fiona
+memory_profiler
