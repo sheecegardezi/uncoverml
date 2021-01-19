@@ -17,9 +17,12 @@ module load python3/3.7.4
 module load gdal/3.0.2
 
 chmod +x $HOME/uncoverml/jupyter/jupyter.host.sh
+chmod +x $HOME/uncoverml/jupyter/jupyter.host2.sh
+chmod +x $HOME/uncoverml/jupyter/jupyter.host3.sh
 
 python3 -m venv $HOME/uncoverml/venv
 source $HOME/uncoverml/venv/bin/activate
 $HOME/uncoverml/venv/bin/python -m pip install -r $HOME/uncoverml/requirements.txt
-qsub $HOME/uncoverml/jupyter/jupyter.host.sh
+qsub $HOME/uncoverml/jupyter/jupyter.host2.sh
+qsub $HOME/uncoverml/jupyter/jupyter.host3.sh
 nqstat_anu
