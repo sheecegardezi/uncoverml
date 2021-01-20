@@ -1,0 +1,13 @@
+
+======================================================================================
+                  Resource Usage on 2021-01-20 10:09:58:
+   Job Id:             15894450.gadi-pbs
+   Project:            ge3
+   Exit Status:        1
+   Service Units:      0.08
+   NCPUs Requested:    48                     NCPUs Used: 48              
+                                           CPU Time Used: 00:00:01                                   
+   Memory Requested:   96.0GB                Memory Used: 15.24MB         
+   Walltime requested: 12:00:00            Walltime Used: 00:00:01        
+   JobFS requested:    100.0GB                JobFS used: 0B              
+======================================================================================
