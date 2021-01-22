@@ -1,9 +1,10 @@
 #!/bin/bash 
 #PBS -N uncoverml 
 #PBS -P ge3 
-#PBS -q express 
+#PBS -q gpuvolta
 #PBS -l walltime=12:00:00 
-#PBS -l ncpus=48 
+#PBS -l ncpus=12
+#PBS -l ngpus=1
 #PBS -l mem=96GB
 #PBS -l jobfs=100GB 
 #PBS -l storage=gdata/ge3 
@@ -25,7 +26,7 @@ module load python3/3.7.4
 module load gdal/3.0.2
 source $PBS_O_WORKDIR/uncoverml/venv/bin/activate
 
-export jport=8389
+export jport=8391
 
 echo "Jupyter lab started ..."
 jupyter lab --no-browser --ip=`hostname` --port=${jport} &
@@ -35,3 +36,4 @@ cd $PBS_O_WORKDIR
 echo "ssh -N -L ${jport}:`hostname`:${jport} ${USER}@gadi.nci.org.au &" > client_cmd
 
 sleep infinity
+
