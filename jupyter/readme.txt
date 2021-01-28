@@ -30,4 +30,4 @@ qsub $HOME/uncoverml/jupyter/jupyter.host3.sh
 nqstat_anu
 
 
-qsub $HOME/github/uncover-ml/jupyter/jupyter_pbsjob.sh
+cd $HOME && qsub $HOME/github/uncover-ml/jupyter/jupyter_pbsjob.sh
