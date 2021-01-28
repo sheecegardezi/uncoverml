@@ -28,9 +28,18 @@ def get_score_without_feature(X, y, features_to_drop):
     return mean_score
 
 
+def get_scoring_funtion_polarity(scoring):
+    y_test, y_test_max,y_test_min = [1,2,3,4,5,6],[1,2,3,4,5,6],[900, 800,100,222,331,143]
+    score_max = metrics.explained_variance_score(y_test, y_test_max)
+    score_min = metrics.explained_variance_score(y_test, y_test_min)
+    return score_max >= score_min
 
-def find_least_important_feature(X, y):
-        
+def find_least_important_feature(X, y,scoring,model):
+
+
+
+
+    is_maximum = get_scoring_funtion_polarity(scoring)
     intermediate_results = {}
     for featureindex,feature_name in enumerate(X.columns):
         score_without_feature = get_score_without_feature(X, y, feature_name)
@@ -38,15 +47,25 @@ def find_least_important_feature(X, y):
         print("Getting score for: ",feature_name,score_without_feature)
            
     # calculate the results        
-    lowest_feature = None
-    lowest_score = -9999
-    for feature_name in intermediate_results.keys():
-        score_without_feature = intermediate_results[feature_name]
-        if score_without_feature >= lowest_score:
-            lowest_score = score_without_feature
-            lowest_feature = feature_name
-        del score_without_feature
-    
+    if is_maximum:
+        lowest_feature = None
+        lowest_score = -9999
+        for feature_name in intermediate_results.keys():
+            score_without_feature = intermediate_results[feature_name]
+            if score_without_feature >= lowest_score:
+                lowest_score = score_without_feature
+                lowest_feature = feature_name
+            del score_without_feature
+    else:
+        lowest_feature = None
+        lowest_score = 99999
+        for feature_name in intermediate_results.keys():
+            score_without_feature = intermediate_results[feature_name]
+            if score_without_feature <= lowest_score:
+                lowest_score = score_without_feature
+                lowest_feature = feature_name
+            del score_without_feature
+
     
     results = {}
     results["lowest_score"] = lowest_score
@@ -54,16 +73,13 @@ def find_least_important_feature(X, y):
     results["intermediate_results"] = intermediate_results
     return results
 
-def feature_ranking_elimination(X,y, min_features_required=2):
+def feature_ranking_elimination(X,y, min_features_required=2,scoring='r2',model=XGBRegressor(objective='reg:squarederror',tree_method='gpu_hist', gpu_id=0, n_jobs=-1)):
     
     results = {}
     current_total_feature = X.shape[1]
 
     count = 1
-    print("Using neg_root_mean_squared_error as scoring ")
-    print("Staring experiment for: ",X.shape[1]," features")
     results[current_total_feature] = find_least_important_feature(X,y)
-    print("Results of ",str(count)," iteration:",results[current_total_feature]["lowest_score"],results[current_total_feature]["lowest_feature"])
 
     current_X = X.drop(results[current_total_feature]["lowest_feature"],axis=1)   
     current_total_feature = current_X.shape[1]
