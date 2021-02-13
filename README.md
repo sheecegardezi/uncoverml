@@ -1,5 +1,7 @@
 # uncoverml
 
+https://python-data-science.readthedocs.io/en/latest/general.html
+
 
 ssh sg4953@gadi.nci.org.au
 nqstat_anu
@@ -27,7 +29,7 @@ pip install -r requirements.txt
 
 jupyter-lab
 
-
+scp sg4953@gadi.nci.org.au:/home/547/sg4953/github/uncover-ml/notebooks/Workflow.ipynb /home/dev/Desktop/Work/uncoverml
 
 "# /apps/pangeo/2020.05/bin/python -m pip install --user rasterio\n",
 "# /apps/pangeo/2020.05/bin/python -m pip install --user wheel\n",
