@@ -22,3 +22,4 @@ tune_sklearn
 scikit-optimize
 tqdm
 bayesian-optimization
+altair
